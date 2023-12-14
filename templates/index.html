@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animes</title>
-</head>
+{% block body %}
+<h1>HOLA MUNDO</h1>
 
-<body>
-    <h1>HOLA MUNDO</h1>
+<div class="anime-form">
+    <form method="post" action="{{ url_for('search') }}">
+        <!-- <label for="search">Name pokemon or ID:</label> -->
+        <input type="text" id="search" name="search" placeholder="Nombre del anime" required>
+        <button type="submit">Search</button>
+    </form>
+</div>
 
-    <div class="pokemon-form">
-        <form method="post" action="{{ url_for('search') }}">
-            <!-- <label for="search">Name pokemon or ID:</label> -->
-            <input type="text" id="search" name="search" placeholder="Nombre del anime" required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <!-- <h2>{{ current_search }}</h2> -->
-</body>
-
-</html>
+{% endblock %}
