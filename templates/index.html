@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Animes</title>
 </head>
 
 <body>
     <h1>HOLA MUNDO</h1>
+
+    <div class="pokemon-form">
+        <form method="post" action="{{ url_for('search') }}">
+            <!-- <label for="search">Name pokemon or ID:</label> -->
+            <input type="text" id="search" name="search" placeholder="Nombre del anime" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <!-- <h2>{{ current_search }}</h2> -->
 </body>
 
 </html>
