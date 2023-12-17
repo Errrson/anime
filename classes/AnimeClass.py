@@ -28,7 +28,11 @@ class AnimeClass:
                 'trailer': self.anime_data['trailer']['embed_url'],
                 'synopsis': self.anime_data['synopsis'],
                 'pictures': self.get_anime_pictures(),
-                'more_info': self.anime_data['url']
+                'more_info': self.anime_data['url'],
+                'type': self.anime_data['type'],
+                'status': self.anime_data['status'],
+                'episodes': self.anime_data['episodes'],
+                'duration': self.anime_data['duration']
             }
             return anime_data
         else:
@@ -40,9 +44,8 @@ class AnimeClass:
         if self.response_pictures.ok:
             pictures_json = self.response_pictures.json()
             self.anime_pictures = pictures_json['data']
-            pictures_list = []
-            for element in self.anime_pictures:
-                pictures_list.append(element['jpg']['large_image_url'])
+            pictures_list = [element['jpg']['large_image_url']
+                             for element in self.anime_pictures]
             return pictures_list
         else:
             return False
