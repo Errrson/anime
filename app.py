@@ -5,10 +5,14 @@ from classes.AnimeClass import AnimeClass
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def index():
+    current_search = None
+    if request.method == 'POST':
+        current_search = request.form.get("search")
+
     Animes = AnimeListClass()
-    anime_list = Animes.get_anime_list()
+    anime_list = Animes.get_anime_list(current_search)
     return render_template("index.html", anime_list=anime_list)
 
 
@@ -16,16 +20,10 @@ def index():
 def page_anime(id_anime):
     Anime = AnimeClass(id_anime)
     anime_data = Anime.get_anime_data()
-    return render_template("anime.html", anime_data=anime_data)
-
-
-@app.route("/anime/search", methods=['POST'])
-def search():
-    current_search = "nada"
-    if request.method == 'POST':
-        current_search = request.form.get("search")
-
-    return redirect(url_for("index", current_search=current_search))
+    if anime_data:
+        return render_template("anime.html", anime_data=anime_data)
+    else:
+        return render_template("404.html")
 
 
 if __name__ == "__main__":
