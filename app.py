@@ -1,16 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for
+from classes.AnimeListClass import AnimeListClass
+from classes.AnimeClass import AnimeClass
 
 app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
-    return render_template("index.html")
+def index():
+    Animes = AnimeListClass()
+    anime_list = Animes.get_anime_list()
+    return render_template("index.html", anime_list=anime_list)
 
 
-@app.route("/anime/<string:name_anime>")
-def page_anime(name_anime):
-    return render_template("anime.html", name_anime=name_anime)
+@app.route("/anime/<string:id_anime>")
+def page_anime(id_anime):
+    Anime = AnimeClass(id_anime)
+    anime_data = Anime.get_anime_data()
+    return render_template("anime.html", anime_data=anime_data)
 
 
 @app.route("/anime/search", methods=['POST'])
