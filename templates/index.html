@@ -5,6 +5,9 @@
 
 <div class="container">
     <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+        {% if anime_list|length == 0 %}
+        <p>Result not found</p>
+        {% else %}
         {% for anime in anime_list %}
         <div class="col">
             <div class="card h-100">
@@ -17,6 +20,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 
