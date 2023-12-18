@@ -1,0 +1,25 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+li.details__item span {
+    display: block;
+}
+
+.carousel-inner img {
+    height: 350px;
+}
+
+@media (max-width: 991px) {
+    .details__score {
+        border: none !important;
+    }
+}
