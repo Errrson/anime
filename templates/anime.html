@@ -27,11 +27,13 @@
                                 <span class="details__name">Popularity</span>
                                 <span class="details__value fw-semibold">#{{anime_data.popularity}}</span>
                             </li>
-                            {% if anime_data.type == "Movie" %}
-                            <p>{{anime_data.type}}: {{anime_data.duration}}</p>
-                            {% elif anime_data.type == "TV" %}
-                            <p>{{anime_data.type}} - {{anime_data.episodes}} episodes - {{anime_data.duration}}</p>
-                            {% endif %}
+                            <li class="details__item">
+                                <span class="details__name">{{anime_data.type}}</span>
+                                <span class="details__value fw-semibold">{{anime_data.duration}}</span>
+                                {% if anime_data.episodes %}
+                                <span class="details__value fw-semibold">Episodes {{anime_data.episodes}}</span>
+                                {% endif %}
+                            </li>
                             <li class="details__item">
                                 <span class="details__name">Members</span>
                                 <span class="details__value fw-semibold">{{anime_data.members}}</span>
