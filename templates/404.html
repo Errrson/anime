@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>404</h1>
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100%;">
+    <div class="block-404 text-center">
+        <h1>404</h1>
+        <p>This anime does not exist, please do another search</p>
+        <img class="img-fluid" src="{{ url_for('static', filename='assets/images/404.webp') }}">
+    </div>
+</div>
 {% endblock %}
